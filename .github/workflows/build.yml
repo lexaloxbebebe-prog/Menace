@@ -1,0 +1,13 @@
+name: Build
+on: push
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+      - run: cl.exe /EHsc /std:c++20 /O2 /MT /GL /GS- /DNDEBUG /Fe:Menace.dll /LD Menace.cpp d3d11.lib dxgi.lib user32.lib gdi32.lib psapi.lib /link /OPT:REF /OPT:ICF /LTCG
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Menace
+          path: Menace.dll да это сообщение
