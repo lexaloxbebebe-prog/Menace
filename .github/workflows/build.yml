@@ -1,8 +1,10 @@
 name: Build
 on: push
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2025
     steps:
       - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
@@ -10,4 +12,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Menace
-          path: Menace.dll да это сообщение
+          path: Menace.dll
